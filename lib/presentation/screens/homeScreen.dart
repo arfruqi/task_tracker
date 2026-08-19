@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_tracker/data/models/task.dart';
 import 'package:task_tracker/presentation/providers/task_provider.dart';
+import 'package:task_tracker/presentation/screens/TaskEditScreen.dart';
 
 class TaskHomeScreen extends ConsumerStatefulWidget {
   const TaskHomeScreen({super.key});
@@ -79,6 +80,11 @@ class _TaskHomeScreenState extends ConsumerState<TaskHomeScreen> {
                             ref.read(taskProvider.notifier).deleteTask(task);
                           },
                         ),
+                        onTap: (){
+                          Navigator.push(context, 
+                          MaterialPageRoute(builder: (context) => TaskEditScreen(task: task)),
+                          );
+                        },
                       ),
                     );
                   },
